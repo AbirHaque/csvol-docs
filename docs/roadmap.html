@@ -14,7 +14,7 @@
     }
 
     header {
-      text-align:center;
+      text-align:left;
       font-size: 24px	
     }
 
@@ -41,8 +41,8 @@
     }
   </style>
   <body>
-    <header><img src="../Assets/logo_2.png"></header>
-    <header style="text-align:left;font-size: 40px;">CSVOL SOL</header>
+    <header style="text-align:center;font-size: 40px;"><img src="../Assets/logo_2.png"></header>
+    <header style="font-size: 40px;">CSVOL Docs</header>
     <br>
     <ul>
       <li><a href="../contact.html">Contact</a></li>
@@ -51,28 +51,28 @@
       <li><a href="https://abirhaque.github.io/csvol-docs">Home</a></li>
     </ul>
     <br>
-    <header style="text-align:left;font-size: 24p;">Files</header>
+    <header>
+      Roadmap
+    </header>
     <br>
-    Importable by writing the following at the top of your main.csvol file:
+    General meeting notes documenting all of Wichita CPU's operations can be found on <a href="https://docs.google.com/document/d/1penokzeQKJ7PXM5JvUvn8pT_uso4QuSFwjQhdeqkrpU/">our group's public Google Doc</a>.
     <br>
-    <pre style="color: silver; background: darkslategrey;overflow:auto">
-
-    IMPORT FILE csvol-sol [item]
-    </pre>
     <br>
-    Accessable by writing the following:
+    We plan to implement the following features:
     <br>
-    <pre style="color: silver; background: darkslategrey;overflow:auto">
-
-    PULL FILE [item]
-    </pre>
     <br>
-    <dl>
-      <b>Available files:</b>
-      <br>
-      <br>
-        <dd>Soon to be added.</dd>
-      <br>
-	  </dl>
+    - More specific search functions
+    <br>
+    - Advanced math functions, mainly trigonometric (sin, cos, tan, etc)
+    <br>
+    - Make GUI UX better (drag/drop, keyboard/mouse commands, etc)
+    <br>
+    - Build up SOL infrastructure by adding commands besides the previously stated ones
+    <br>
+    - Fix looping issues in REPL environment
+    <br>
+    <br>
+    More additions will be decided upon and listed during general meetings.
+    <br>
   </body>
 </html>
