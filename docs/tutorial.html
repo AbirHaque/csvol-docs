@@ -51,8 +51,298 @@
       <li><a href="https://abirhaque.github.io/csvol-docs">Home</a></li>
     </ul>
     <br>
-    <header>
+Welcome to the one-page tutorial CSVOL programming. By the end of this tutorial, you should be able to:
+<br><br>
+- Write scripts
+<br>
+- Enter REPL commands
+<br>
+- Publish a file server
+<br>
+- Import commands from SOL
+<br>
+- Import datasets from websites
+<br>
+<br>
+At the end, you'll also find out about a few of CSVOL's quirks, like optional syntax and error reporting. All of the CSVOL code below works in this repl: <a href="https://repl.it/@wichitacpu/CSVOL-Example-2#main.csvol">https://repl.it/@wichitacpu/CSVOL-Example-2#main.csvol</a>.
+<br><br>
+<header>
       Tutorial
-    </header>
+</header>
+
+<br><b>REPL</b><br><br>
+To command through the terminal, leave main.csvol blank, or write the following in a .csvol script if you want to call it at a certain time.
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+      
+    PULL REPL
+    </pre>
+    <i>Output:</i>
+
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    CSVOL 0.9.4.
+    CSVOL Copyright (C) 2020 Abir Haque.
+    Developed by the Wichita Computer Programmers' Union.
+
+    REPL enabled.
+    Type "HELP" for a list of commands and their usage.
+    </pre>
+
+    End REPL/terminal programming and resume script instructions, if any:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    DROP REPL
+    </pre>
+
+    <br><br><br><br><br><b>REPL and Script commands</b><br><br>
+    The following commands work in both a .csvol script and the REPL environment.
+    <br>
+    <br>
+    Commenting:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    COMMENT This is a comment
+    ~ This is also a comment
+    ~ A comment must be given the entire line
+    </pre>
+    Creating an empty file:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    CREATE FILE file_name
+    CREATE FILE delete
+    ~ Generates file_name.csv and delete.csv
+    </pre>
+    Deleting files:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    DELETE FILE delete
+    </pre>
+    Instantiating columns, rows, and cell values:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    ~ Can pull pre-existing files too
+    PULL FILE file_name
+      CREATE COLUMNS<~{column_1, column_2, column_i}
+      CREATE ROWS<~{4}
+      ADD {0, 1}<~{apples}
+      ADD {0, 2}<~{bananas}
+      ~ Must drop file at the end of instantiation.
+      DROP FILE
+    </pre>
+    Terminal output:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    PRINT TEXT My first file!
+    PRINT FILE file_name
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    My first file!
+    column_1,column_2,column_i
+    apples,0,0
+    bananas,0,0
+    0,0,0
+    0,0,0
+    </pre>
+    Editing files:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    EDIT FILE file_name CELL {0, 3}<~{FILE file_name CELL {0, 2}}
+    EDIT FILE file_name CELL {0, 2}<~{pear}
+    EDIT FILE file_name CELL {0, 0}<~{fruits}
+    EDIT FILE file_name CELL {1, 0}<~{quantity}
+    ~ Add 2 empty rows.
+    EDIT FILE file_name ROWS ADD<~{2}
+    ~ Below deletes columns from column 2 to column 2 (index starts at 0)
+    EDIT FILE file_name COLUMNS DELETE<~{2, 2}
+    ~ Below adds columns to the far right of the file.
+    EDIT FILE file_name COLUMNS ADD<~{column_3, column_4}
+    ~ Below deletes rows from row 1 to row 1 (column name row is row 0)
+    EDIT FILE file_name ROWS DELETE<~{1, 1}
+    PRINT FILE file_name
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    fruits,quantity,column_3,column_4
+    pear,0,0,0
+    bananas,0,0,0
+    0,0,0,0
+    0,0,0,0
+    0,0,0,0
+    </pre>
+    Math operators:
+    +,-,/, and * are supported.
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    EDIT FILE file_name CELL {1, 1}<~{MATH {20 - 10}}
+    EDIT FILE file_name CELL {1, 2}<~{MATH {{FILE file_name CELL {1, 1}} * 50}}
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    fruits,quantity,column_3,column_4
+    pear,10,0,0
+    bananas,500,0,0
+    0,0,0,0
+    0,0,0,0
+    0,0,0,0
+    </pre>
+    <br><br><br><br><br><b>Importing from SOL</b><br><br>
+    It's recommended to put import statements at the top of your CSVOL project.
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    IMPORT COMMAND csvol-sol Display
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    Please wait. Accessing CSVOL's Standard Online Library . . . 
+    Please wait. Importing library . . . 
+    Done!
+    </pre>
+    Running the csvol-sol Display command
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    PRINT TEXT Press the exit button to continue.
+    IMPORTED Display FILE file_name
+    ~ A new window will pop up with a spreadsheet of the file.
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    Press the exit button to continue.
+    Please wait. Loading GUI . . . 
+    Done!
+    </pre>
+    <br><br><br><br><br><b>Downloading/Syncing online files</b><br><br>
+    As of now, SOL has no importable CSV files.
+    <br><br>
+    However, you can use any website publicly hosting CSV files. This website hosts a great deal of CSV files and is an awesome website to connect the interpreter to: <a href="https://people.sc.fsu.edu/~jburkardt/data/csv/">https://people.sc.fsu.edu/~jburkardt/data/csv/</a>.
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    IMPORT FILE https://people.sc.fsu.edu/~jburkardt/data/csv/ taxables
+    PRINT FILE taxables
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    "Index", "Item", "Cost", "Tax", "Total"
+    1, "Fruit of the Loom Girl's Socks",  7.97, 0.60,  8.57
+    2, "Rawlings Little League Baseball", 2.97, 0.22,  3.19
+    3, "Secret Antiperspirant",           1.29, 0.10,  1.39
+    4, "Deadpool DVD",                   14.96, 1.12, 16.08
+    5, "Maxwell House Coffee 28 oz",      7.28, 0.55,  7.83
+    6, "Banana Boat Sunscreen, 8 oz",     6.68, 0.50,  7.18
+    7, "Wrench Set, 18 pieces",          10.00, 0.75, 10.75
+    8, "M and M, 42 oz",                  8.98, 0.67,  9.65
+    9, "Bertoli Alfredo Sauce",           2.12, 0.16,  2.28
+    10, "Large Paperclips, 10 boxes",      6.19, 0.46,  6.65
+    </pre>
+    You can manage this synced file with CSVOL just as you would any other CSV file.
+    <br><br><br><br><br><b>Script-only commands</b><br><br>
+    CSVOL modules:
+    <br><br>
+    Creating CSVOL modules are create for dividing tasks. Modules are especially useful for implementing recursion.
+    In your interpreter directory, create a new file ending in .csvol. Here is the contents of the example.csvol module:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    PRINT TEXT Accessed example module.
+    ~ Put what ever CSVOL code you want above PULL MAIN
+    ~ PULL MAIN resumes spot in main.csvol
+    PULL MAIN
+    </pre>
+     Calling modules from main.csvol:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    PULL MODULE example
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    Accessed example module. 
+    </pre>
+    Conditionals:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    IF FILE file_name CELL {0, 3} = TEXT {0}
+      PRINT TEXT Empty row.
+    CONDITIONAL
+    IF FILE file_name CELL {1, 1} <= FILE file_name CELL {1, 2}
+      PRINT TEXT Less/equal pears than bananas.
+    CONDITIONAL
+    IF FILE file_name CELL {0, 1} = TEXT {0}
+      PRINT TEXT They don't sell pears.
+    CONDITIONAL
+    IF FILE file_name CELL {0, 1} != TEXT {0}
+      PRINT TEXT Pears are in the store.
+    CONDITIONAL
+    </pre>
+    <i>Output:</i>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    Empty row.
+    Less pears than bananas
+    Pears are in the store. 
+    </pre>
+
+    <br><br><br><br><br><b>Creating a file server</b><br><br>
+    As previously stated, CSVOL creates/updates a public file server for you. This occurs at the end of every CSVOL run-time session for all files ending in .csv in the CSVOL interpreter directory. 
+    <br><br>
+    If you are using <a href="https://repl.it/">repl.it</a>, your file server is available at <b>[repl_name].[username].repl.co</b>.
+
+    To kill the online file server, enter <b>CTRL+C</b> in the terminal.
+
+    <br><br><br><br><br><b>Miscellaneous:</b><br><br>
+    The following features were implemented to promote easy, rapid development of CSVOL applications:
+    <br>
+    <br>
+    - Optional syntax:
+    <br>
+    - Error reporting by file and line:
+    <br>
+    <br>
+    <br>
+    <i>Optional syntax:</i>
+    <br>
+    <br>
+    The interpreter ignores tab spaces, brackets, and commas. The interpreter also equates "<~" to white space. However, you can still put such characters in your CSVOL program to aide in code readability. The following lines of code are interpreted exactly the same, whereas the 1st line is much more readable:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    EDIT FILE file_name CELL {1, 2}<~{MATH {{FILE file_name CELL {1, 1}} * 50}}
+    EDIT FILE file_name CELL 1 2 MATH FILE file_name CELL 1 1 * 50
+    </pre>
+    <i>Error reporting by file and line:</i>
+    <br>
+    <br>
+    The interpreter will report errors in both the file and line number the error is located.
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    33  PULL FILE search
+    34    CREATE COLUMNS<~{Term_to_search}
+    35    CREATE ROWS<~{1}
+    36    ADD {0,1}{8}
+    37    DROP FILE
+    </pre>
+    Reports:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    CSVOL error ~> File main.csvol ~> Line 36.
+    </pre>
+    Needed corrections:
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    33  PULL FILE search
+    34    CREATE COLUMNS<~{Term_to_search}
+    35    CREATE ROWS<~{1}
+    36    ADD {0, 1}<~{8}
+    37    DROP FILE
+    </pre>
+    <br><br><br><br><br><b>Congratulations!</b><br><br>
+    You're now a CSVOL programmer! 
+    <br>
+    <br>
+    If you want some inspiration for a CSVOL project, check out the following example CSVOL program, which uses GUIs, calculates a user inputted Nth Fibonacci term, and implements recursive searching: <a href="https://repl.it/@wichitacpu/CSVOL-Example#main.csvol">https://repl.it/@wichitacpu/CSVOL-Example#main.csvol</a>.
   </body>
 </html>
