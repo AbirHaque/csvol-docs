@@ -2,7 +2,7 @@
 Command to display and edit file contents in a GUI.
 Usage: IMPORTED Display FILE [filename]
 @author Abir Haque
-@version 1.0.3
+@version 1.1.0
 @since CSVOL 0.8.0.
 */
 import java.io.*;
@@ -17,7 +17,9 @@ public class Display
   public static int rows;
   public static boolean disposed = false;
 
-  public static void main(ArrayList<String> args, ArrayList<String> originalArgs) throws Exception
+  public static void main(ArrayList<String> args, ArrayList<String> originalArgs) 
+
+throws Exception
   {
     ArrayList<String> arguments = args;
     System.out.println("Please wait. Loading GUI . . . ");
@@ -38,14 +40,23 @@ public class Display
     while(inEdit.ready())
     {
       fileLines.add(inEdit.readLine());
-      columns++;
     }
     inEdit.close();
+
+    String column_names = fileLines.get(0);
+    StringTokenizer tokenized_column_names= new StringTokenizer(column_names, 
+
+Main.delimeter);
+    while(tokenized_column_names.hasMoreTokens())
+    {
+	columns++;
+	tokenized_column_names.nextToken();
+    }
+    columns = columns;
     rows = fileLines.size();
 
     JFrame frame = new JFrame(arguments.get(3));
-    JTextField[][] sheet = new JTextField[columns][rows];
-
+    JTextField[][] sheet = new JTextField[rows][columns];
     int xCoord = 0;
     int yCoord = 0;
 
@@ -66,9 +77,8 @@ public class Display
       }
       yCoord+=20;
     }
-
     JButton saveButton = new JButton("Exit");
-    saveButton.setBounds(xCoord,0,100,20);
+    saveButton.setBounds(0,yCoord,100,20);
 
     frame.add(saveButton);
 
@@ -84,29 +94,31 @@ public class Display
       {
         try
         {
-          if(rows<=2)
-          {
-            PrintWriter outEdit = new PrintWriter(new FileWriter((Main.currentFile).getName()));
+            PrintWriter outEdit = new PrintWriter(new FileWriter
+
+((Main.currentFile).getName()));
             int rows = Display.rows;
-            for (int i = 0; i < rows; i++)
+            for (int k = 0; k < rows; k++)
             {
-              int columns = Display.columns/2;
-              for (int j = 0; j < columns; j++)
+              int columns = Display.columns;
+              for (int l = 0; l < columns; l++)
               {
-                if((((sheet[i][j]).getText()).toString()).equals("") == false)
+                if((((sheet[k][l]).getText()).toString()).equals("") == false)
                 {
-                  if(j==0)
+                  if(l==0)
                   {
-                    outEdit.print((((sheet[i][j]).getText()).toString()));
+                    outEdit.print((((sheet[k][l]).getText()).toString()));
                   }
                   else
                   {
-                    outEdit.print(Main.delimeter+(((sheet[i][j]).getText()).toString()));
+                    outEdit.print(Main.delimeter+(((sheet[k][l]).getText()).toString
+
+()));
                   }
                 }
                 else
                 {
-                  if(j==0)
+                  if(l==0)
                   {
                     outEdit.print("0");
                   }
@@ -122,13 +134,6 @@ public class Display
             frame.dispose();
             disposed = true;
             System.out.println("Exited successfully.");
-          }
-          else
-          {
-            frame.dispose();
-            disposed = true;
-            System.out.println("Exited successfully.");
-          }
         }
         catch(Exception x)
         {
