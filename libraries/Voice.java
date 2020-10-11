@@ -19,6 +19,14 @@ public class Voice
 	public static void main(ArrayList<String> args, ArrayList<String> originalArgs) throws Exception
   	{
     		ArrayList<String> arguments = originalArgs;
+        File dir1 = new File("voice");
+				File dir2 = new File("voice/recordings");
+				File dir3 = new File("voice/temps");
+				File dir4 = new File("voice/voicebanks");
+				dir1.mkdirs();
+				dir2.mkdirs();
+				dir3.mkdirs();
+				dir4.mkdirs();
 		if ((arguments.get(2)).equals("PLAY"))
 		{
 			play(arguments);
