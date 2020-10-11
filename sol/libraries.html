@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="../Assets/logo_3.png">
+    <title>CSVOL</title>
+  </head>
+  <style>
+    body {
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 10% 10%;
+    }
+
+    header {
+      text-align:center;
+      font-size: 24px	
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000000;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+    }
+
+    li {
+      float: right
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 12px 12px;
+    }
+  </style>
+  <body>
+    <header><img src="../Assets/logo_2.png"></header>
+    <header style="text-align:left;font-size: 40px;">CSVOL SOL</header>
+    <br>
+    <ul>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="../sol.html">SOL</a></li>
+      <li><a href="../docs.html">Docs</a></li>
+      <li><a href="../install.html">Install</a></li>
+      <li><a href="https://abirhaque.github.io/csvol-docs">Home</a></li>
+    </ul>
+    <br>
+    <header style="text-align:left;font-size: 24p;">Libraries</header>
+    <br>
+    Importable by writing the following at the top of your main.csvol file:
+    <br>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    IMPORT LIBRARY csvol-sol [item]
+    </pre>
+    <br>
+    Accessable by writing the following:
+    <br>
+    <pre style="color: silver; background: darkslategrey;overflow:auto">
+
+    LIBRARY [item] [args...]
+    </pre>
+    <br>
+    <dl>
+      <b>Available Libraries:</b>
+      <br>
+      <br>
+      <a href="../commands/Delimiter.java">Delimiter</a>
+      <dd>Sets custom delimiters.</dd>
+      <br>
+      <a href="../commands/Display.java">Display</a>
+      <dd>Generates spreadsheet GUI of CSV dataset.</dd>
+			<br>
+      <a href="../commands/Voice.java">Voice</a>
+      <dd>Generates and plays voice synthesized audio files.</dd>
+			<br>
+			<dd><b>You must have FFmpeg installed on your machine!</b> FFmpeg is needed to change the pitch of audio files. <br>Please do the following in order to have CSVOL Voice running with FFmpeg.</dd>
+			<dd>1. Head to <a href="https://ffmpeg.org/download.html">https://ffmpeg.org/download.html</a> to find an appropriate binary download for your system.</dd><dd>2. Locate the directory containing ffmpeg.exe (most likely in a 'bin' folder).</dd><dd>3. Paste that directory in your environment variables.</dd><br><dd><i>Why do I have to do this?:</i></dd><dd>I, Abir Haque personally apologize for not including FFmpeg in your version of the CSVOL Voice library. As of 10 October 2020, I did not include FFmpeg as it is protected under the GNU Lesser General Public License (LGPL). To remain compliant with the LGPL, I either must follow the license compliance checklist located at <a href="https://ffmpeg.org/legal.html">https://ffmpeg.org/legal.html</a>, or force the end-user, you, to download and configure FFmpeg for CSVOL. I am not against following the checklist. In fact, I plan on following the checklist to include FFmpeg in future version of the CSVOL Voice library.</dd>
+      <br>
+	  </dl>
+  </body>
+</html>

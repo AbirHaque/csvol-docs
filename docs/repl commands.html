@@ -51,9 +51,192 @@
       <li><a href="../install.html">Install</a></li>
       <li><a href="https://abirhaque.github.io/csvol-docs">Home</a></li>
     </ul>
-    <br>
+		<br>
     <header>
-      REPL Commands
+      CSVOL 21 REPL Commands
+    </header>
+    
+    <dl>
+      <b>ADD [column number] [row number] [args...]</b>
+      <br>
+      Description: Populates cell given coordinates and arguments.
+      <br>
+      <br>
+
+      <b>COMMENT [text]</b>
+      <br>
+      Description: Creates comment on single line.
+      <br>
+      <br>
+
+			<b>~ [text]</b>
+      <br>
+      Description: Creates comment on single line.
+      <br>
+      <br>
+
+      <b>CREATE [options] [args...]</b>
+      <br>
+      Description: Creates item dependent on option and args.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE [filename]</b></dd>
+      <dd>&emsp;Creates empty file.</dd>
+      <br>
+      <dd><b>COLUMNS [column name 1] ... [column name i]</b></dd>
+      <dd>&emsp;Creates column names.</dd>
+      <br>
+      <dd><b>ROWS [number of rows]</b></dd>
+      <dd>&emsp;Creates rows. must create columns before rows.</dd>
+      <br>
+      <br>
+
+      <b>DELETE [options] [args...]</b>
+      <br>
+      Description: Deletes item dependent on option and args.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE [filename]</b></dd>
+      <dd>&emsp;Deletes file.</dd>
+      <br>
+      <br>
+
+      <b>DROP [options]</b>
+      <br>
+      Description: Nulls current method of input/output.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE</b></dd>
+      <dd>&emsp;Ends file manipulation.</dd>
+      <br>
+      <dd><b>REPL</b></dd>
+      <dd>&emsp;Ends REPL input.</dd>
+      <br>
+      <br>
+
+      <b>EDIT [options] [args...]</b>
+      <br>
+      Description: Edits item dependent on options and args.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE [filename] [option1] [option2] [args...]</b></dd>
+      <br>
+      <dd>&emsp;Edits file dependent on options and args.</dd>
+      <br>
+      <br>
+      <dd>&emsp;Where option1 includes:</dd>
+      <br>
+      <dd><b>&emsp;&emsp;COLUMNS [options2]</b><dd>
+        <br>
+      <dd>&emsp;&emsp;Where option2 includes:<dd>
+        <br>
+      <dd><b>&emsp;&emsp;&emsp;ADD [column name 1] ... [column name i]</b></dd>
+      <br>
+      <dd><b>&emsp;&emsp;&emsp;DELETE [column minimum index] [column maximum index]</b></dd>
+      <br>
+      <dd><b>&emsp;&emsp;ROWS [options2]</b></dd>
+      <br>
+      <dd>&emsp;&emsp;Where option2 includes:</dd>
+      <br>
+      <dd><b>&emsp;&emsp;&emsp;ADD [row number]</b></dd>
+      <br>
+      <dd><b>&emsp;&emsp;&emsp;DELETE [row minimum index] [row maximum index]</b></dd>
+      <br>
+      <dd><b>&emsp;&emsp;CELL [options2]</b></dd>
+      <br>
+      <dd>&emsp;&emsp;Where option2 includes:</dd>
+      <br>
+      <dd><b>&emsp;&emsp;&emsp;MATH [value] [math operator] [value]</b></dd>
+      <br>
+      <dd><b>&emsp;&emsp;&emsp;[cell value]</b></dd>
+      <br>
+      <br>
+
+      <b>HELP</b>
+      <br>
+      Description: Prints out help page.
+      <br>
+      <br>
+
+      <b>IMPORT [option] [source] [file]</b>
+      <br>
+      Description: Imports library.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>LIBRARY</b></dd>
+      <dd>&emsp;Imports library from source.</dd>
+      <br>
+      <dd><b>MODULE</b></dd>
+      <dd>&emsp;Imports module from source.</dd>
+      <br>
+      <dd><b>FILE</b></dd>
+      <dd>&emsp;Imports file from source.</dd>
+      <br>
+      <br>
+      <b>LIBRARY [command] [arg...]</b>
+      <br>
+      Description: Uses imported library
+      <br>
+      <br>
+
+      <b>PRINT [option] [arg]</b>
+      <br>
+      Description: Outputs item in command-line dependent on option and arg.
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE [filename]</b></dd>
+      <dd>&emsp;Outputs contents of file</dd>
+      <br>
+      <dd><b>TEXT [text]</b></dd>
+      <dd>&emsp;Outputs text</dd>
+      <br>
+      <br>
+
+      <b>PULL [options] [args...]</b>
+      <br>
+      Description: Sets current method of input/output
+      <br>
+      <br>
+      Where options include:
+      <br>
+      <br>
+      <dd><b>FILE [filename]</b></dd>
+      <dd>&emsp;Set dictated file to manipulate.</dd>
+      <br>
+      <dd><b>REPL</b></dd>
+      <dd>&emsp;Set command-line as method of command input.</dd>
+      <br>
+      <dd><b>MODULE [module name]</b></dd>
+      <dd>Set stated module as method of command input</dd>
+      <br>
+      <dd><b>MAIN</b></dd>
+      <dd>Set main.csvol as method of command input</dd>
+      <dd>
+	  </dl>
+    <br>
+		<br>
+		<br>
+		<br>
+    <header>
+      CSVOL 0 REPL Commands
     </header>
     
     <dl>

@@ -52,23 +52,21 @@
       <li><a href="https://abirhaque.github.io/csvol-docs">Home</a></li>
     </ul>
     <br>
-Welcome to the one-page tutorial on CSVOL 0 programming. By the end of this tutorial, you should be able to:
+Welcome to the one-page tutorial on CSVOL 21 programming. By the end of this tutorial, you should be able to:
 <br><br>
 - Write scripts
 <br>
 - Enter REPL commands
 <br>
-- Publish a file server
-<br>
-- Import commands from SOL
+- Import libraries from SOL
 <br>
 - Import datasets from websites
 <br>
 <br>
-At the end, you'll also find out about a few of CSVOL's quirks, like optional syntax and error reporting. All of the CSVOL code below works in this repl: <a href="https://repl.it/@wichitacpu/CSVOL-Example-2#main.csvol">https://repl.it/@wichitacpu/CSVOL-Example-2#main.csvol</a>.
+At the end, you'll also find out about a few of CSVOL's quirks, like optional syntax and error reporting.
 <br><br>
 <header>
-      Tutorial - CSVOL 0
+      Tutorial - CSVOL 21
 </header>
 
 <br><b>REPL</b><br><br>
@@ -81,9 +79,8 @@ To command through the terminal, leave main.csvol blank, or write the following 
 
     <pre style="color: silver; background: darkslategrey;overflow:auto">
 
-    CSVOL 0.9.4.
+    CSVOL 12_0.0.0.
     CSVOL Copyright (C) 2020 Abir Haque.
-    Developed by the Wichita Computer Programmers' Union.
 
     REPL enabled.
     Type "HELP" for a list of commands and their usage.
@@ -194,7 +191,7 @@ To command through the terminal, leave main.csvol blank, or write the following 
     It's recommended to put import statements at the top of your CSVOL project.
     <pre style="color: silver; background: darkslategrey;overflow:auto">
 
-    IMPORT COMMAND csvol-sol Display
+    IMPORT LIBRARY csvol-sol Display
     </pre>
     <i>Output:</i>
     <pre style="color: silver; background: darkslategrey;overflow:auto">
@@ -203,11 +200,11 @@ To command through the terminal, leave main.csvol blank, or write the following 
     Please wait. Importing library . . . 
     Done!
     </pre>
-    Running the csvol-sol Display command
+    Running the csvol-sol Display library
     <pre style="color: silver; background: darkslategrey;overflow:auto">
 
     PRINT TEXT Press the exit button to continue.
-    IMPORTED Display FILE file_name
+    LIBRARY Display FILE file_name
     ~ A new window will pop up with a spreadsheet of the file.
     </pre>
     <i>Output:</i>
@@ -288,13 +285,6 @@ To command through the terminal, leave main.csvol blank, or write the following 
     Pears are in the store. 
     </pre>
 
-    <br><br><br><br><br><b>Creating a file server</b><br><br>
-    As previously stated, CSVOL creates/updates a public file server for you. This occurs at the end of every CSVOL run-time session for all files ending in .csv in the CSVOL interpreter directory. 
-    <br><br>
-    If you are using <a href="https://repl.it/">repl.it</a>, your file server is available at <b>[repl_name].[username].repl.co</b>.
-
-    To kill the online file server, enter <b>CTRL+C</b> in the terminal.
-
     <br><br><br><br><br><b>Miscellaneous:</b><br><br>
     The following features were implemented to promote easy, rapid development of CSVOL applications:
     <br>
@@ -344,6 +334,5 @@ To command through the terminal, leave main.csvol blank, or write the following 
     You're now a CSVOL programmer! 
     <br>
     <br>
-    If you want some inspiration for a CSVOL project, check out the following example CSVOL program, which uses GUIs, calculates a user inputted Nth Fibonacci term, and implements recursive searching: <a href="https://repl.it/@wichitacpu/CSVOL-Example#main.csvol">https://repl.it/@wichitacpu/CSVOL-Example#main.csvol</a>.
   </body>
 </html>
