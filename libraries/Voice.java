@@ -1,12 +1,14 @@
 /*
 Library to synthesize voice.
 Usage: 
+	Create necessary directories for Voice to function:
+		LIBRARY Voice INITIALIZE
 	Generate wav file:
 		LIBRARY Voice [voicebank name] [filename] [text]
 	Play wav file:
 		LIBRARY Voice PLAY [filename]
 @author Abir Haque
-@version 1.0.0
+@version 1.1.0
 @since CSVOL 12_0.0.0
 */
 import java.util.*;
@@ -18,15 +20,12 @@ public class Voice
 {
 	public static void main(ArrayList<String> args, ArrayList<String> originalArgs) throws Exception
   	{
-    		ArrayList<String> arguments = originalArgs;
-        File dir1 = new File("voice");
-				File dir2 = new File("voice/recordings");
-				File dir3 = new File("voice/temps");
-				File dir4 = new File("voice/voicebanks");
-				dir1.mkdirs();
-				dir2.mkdirs();
-				dir3.mkdirs();
-				dir4.mkdirs();
+    	ArrayList<String> arguments = originalArgs;
+        
+		if ((arguments.get(2)).equals("INITIALIZE"))
+		{
+			initialize();
+		}
 		if ((arguments.get(2)).equals("PLAY"))
 		{
 			play(arguments);
@@ -36,6 +35,17 @@ public class Voice
     			fallBack(arguments);
 		}
   	}
+	public static void initialize() throws Exception
+  	{
+			File dir1 = new File("voice");
+			File dir2 = new File("voice/recordings");
+			File dir3 = new File("voice/temps");
+			File dir4 = new File("voice/voicebanks");
+			dir1.mkdirs();
+			dir2.mkdirs();
+			dir3.mkdirs();
+			dir4.mkdirs();
+		}
 	public static void play(ArrayList<String> args) throws Exception
   	{
 		ArrayList<String> arguments = args;
