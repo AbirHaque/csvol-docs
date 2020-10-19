@@ -1,8 +1,8 @@
 /*
 Library to display and edit file contents in a GUI.
-Usage: LIBRARY Display FILE [filename]
+Usage: library Display file [filename]
 @author Abir Haque
-@version 1.0.0
+@version 1.0.1
 @since CSVOL 21_0.0.0
 */
 import java.io.*;
@@ -23,7 +23,7 @@ throws Exception
   {
     ArrayList<String> arguments = args;
     System.out.println("Please wait. Loading GUI . . . ");
-    if ((arguments.get(2)).equals("FILE"))  
+    if ((arguments.get(2)).equalsIgnoreCase("FILE"))  
     {
       file(arguments);
     }
