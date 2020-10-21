@@ -77,7 +77,7 @@ Main.delimeter);
       }
       yCoord+=20;
     }
-    JButton saveButton = new JButton("Exit");
+    JButton saveButton = new JButton("Save");
     saveButton.setBounds(0,yCoord,100,20);
 
     frame.add(saveButton);
